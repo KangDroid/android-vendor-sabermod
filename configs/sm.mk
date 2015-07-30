@@ -100,8 +100,8 @@ ifeq ($(strip $(LOCAL_ARCH)),arm64)
   endif
 endif
 
-# Turn debugging off for all builds.
-FORCE_DISABLE_DEBUGGING := true
+# NEVER DISABLE DEBUGGING!!!!!!!
+FORCE_DISABLE_DEBUGGING := false
 
 ifneq ($(filter arm arm64,$(LOCAL_ARCH)),)
   ifeq ($(strip $(LOCAL_ARCH)),arm)
