@@ -40,7 +40,7 @@ ifneq ($(filter aosp% boostpop% pa% twisted%,$(TARGET_PRODUCT)),)
   include $(SM_VENDOR)/product/aosp_product.mk
 endif
 
-ifneq ($(filter slim% aicp% cm%,$(TARGET_PRODUCT)),)
+ifneq ($(filter slim% aicp% cm% kdp%,$(TARGET_PRODUCT)),)
   TARGET_BASE_ROM := cm
   include $(SM_VENDOR)/product/cm_product.mk
 endif
