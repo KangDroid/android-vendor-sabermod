@@ -24,7 +24,7 @@ endif
 ifneq ($(filter %shamu,$(TARGET_PRODUCT)),)
   KERNEL_DIR := kernel/moto/shamu
   KERNEL_BINARY_IMAGE := zImage-dtb
-  ifneq ($(filter pa%,$(TARGET_PRODUCT)),)
+  ifneq ($(filter pa% cm% kdp%,$(TARGET_PRODUCT)),)
     KERNEL_DEFCONFIG := sabermod_shamu_defconfig
   endif
 endif
