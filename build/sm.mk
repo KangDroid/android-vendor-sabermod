@@ -46,7 +46,6 @@ endif
 
 # Do not use graphite on host modules or the clang compiler.
 # Also do not bother using on darwin.
-ifeq ($(HOST_OS),linux)
   ifneq ($(strip $(LOCAL_IS_HOST_MODULE)),true)
     ifneq ($(strip $(LOCAL_CLANG)),true)
 
@@ -64,8 +63,7 @@ ifeq ($(HOST_OS),linux)
         endif
       endif
     endif
-  endif
-endif
+  endif 
 
 # General flags for gcc 4.9+ to allow compilation to complete.
 # Many of these are device specific and should be set in device make files.
@@ -102,7 +100,6 @@ ifneq ($(filter 5.1% 6.0%,$(SM_AND_NAME)),)
       else
         LOCAL_CFLAGS := -pthread
       endif
-      ifeq ($(strip $(HOST_OS)),linux)
         ifdef LOCAL_LDLIBS
           LOCAL_LDLIBS += -ldl -lpthread
         else
@@ -110,7 +107,6 @@ ifneq ($(filter 5.1% 6.0%,$(SM_AND_NAME)),)
         endif
       endif
     endif
-  endif
 endif
 
 #end SaberMod

@@ -45,10 +45,6 @@ export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:
 # Find host os
 UNAME := $(shell uname -s)
 
-ifeq ($(strip $(UNAME)),Linux)
-  HOST_OS := linux
-endif
-
 ifndef LOCAL_ARCH
   $(warning =====================================================================)
   $(warning Can not determine arch type, defaulting to arm)
@@ -88,8 +84,6 @@ endif
 FORCE_DISABLE_DEBUGGING := false
 
 # Only use these compilers on linux host and arm targets.
-
-ifeq ($(strip $(HOST_OS)),linux)
   ifneq ($(filter arm arm64,$(LOCAL_ARCH)),)
     ifeq ($(strip $(LOCAL_ARCH)),arm)
 
@@ -145,7 +139,6 @@ export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUIL
           GRAPHITE_FLAGS += \
             -Wno-error=maybe-uninitialized
         endif
-      endif
 
       # Path to kernel toolchain
       SM_KERNEL_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_SM_KERNEL)

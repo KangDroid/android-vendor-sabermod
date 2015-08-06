@@ -16,13 +16,6 @@
 # Find host os
 UNAME := $(shell uname -s)
 
-ifeq ($(strip $(UNAME)),Linux)
-  HOST_OS := linux
-endif
-
-# Only use these compilers on linux host.
-ifeq ($(strip $(HOST_OS)),linux)
-
   # Sabermod configs
   TARGET_SM_KERNEL := 5.2
   SHAMU_THREADS := 4
@@ -34,7 +27,6 @@ GRAPHITE_KERNEL_FLAGS := \
     -floop-parallelize-all \
     -ftree-parallelize-loops=$(PRODUCT_THREADS) \
     -fopenmp
-endif
 
 # Extra SaberMod GCC C flags for arch target and Kernel
 EXTRA_SABERMOD_GCC_VECTORIZE := \
