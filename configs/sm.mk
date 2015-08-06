@@ -518,13 +518,14 @@ endif
 # MAYBE_UNINITIALIZED :=
 
 # Check if there's already something set somewhere.
-ifndef MAYBE_UNINITIALIZED
-  MAYBE_UNINITIALIZED := \
-    fastboot
-else
-  MAYBE_UNINITIALIZED += \
-    fastboot
-endif
+# Disable this for now MacOSX Host GCC Doesn't accept this
+#ifndef MAYBE_UNINITIALIZED
+#  MAYBE_UNINITIALIZED := \
+#    fastboot
+#else
+#  MAYBE_UNINITIALIZED += \
+#    fastboot
+#endif
 
 # Bluetooth modules
 LOCAL_BLUETOOTH_BLUEDROID := \
