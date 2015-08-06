@@ -571,7 +571,6 @@ ifeq ($(strip $(LOCAL_O3)),true)
   # -O3 flags and friends
   O3_FLAGS := \
     -O3 \
-    -Wno-error=array-bounds \
     -Wno-error=strict-overflow
 else
     OPT2:=
