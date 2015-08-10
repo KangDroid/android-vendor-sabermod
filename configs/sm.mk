@@ -329,6 +329,8 @@ export TARGET_ARCH_LIB_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUIL
     ifdef TARGET_ARCH_LIB_PATH
 
       # Add extra libs for the compilers to use
+	  # Add support for Darwin -KangDroid
+export DYLD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(DYLD_LIBRARY_PATH)
 export LD_LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LD_LIBRARY_PATH)
 export LIBRARY_PATH := $(TARGET_ARCH_LIB_PATH):$(LIBRARY_PATH)
     endif
