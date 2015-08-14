@@ -34,8 +34,12 @@ ifneq ($(filter %bacon,$(TARGET_PRODUCT)),)
   TARGET_DEVICE := bacon
 endif
 
+ifneq ($(filter %baconcaf,$(TARGET_PRODUCT)),)
+  TARGET_DEVICE := baconcaf
+endif
+
 # Filter ROM base
-ifneq ($(filter aosp% boostpop% pa% twisted%,$(TARGET_PRODUCT)),)
+ifneq ($(filter aosp% boostpop% pa% twisted% rnx%,$(TARGET_PRODUCT)),)
   TARGET_BASE_ROM := aosp
   include $(SM_VENDOR)/product/aosp_product.mk
 endif
