@@ -85,9 +85,9 @@ LOCAL_BLUETOOTH_BLUEDROID := \
   libbluetooth_jni
 
 ifndef NO_OPTIMIZATIONS
-  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID)
+  NO_OPTIMIZATIONS := $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 else
-  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID)
+  NO_OPTIMIZATIONS += $(LOCAL_BLUETOOTH_BLUEDROID) libadbd
 endif
 
 ifeq ($(strip $(LOCAL_ARCH)),arm64)
@@ -655,12 +655,6 @@ export EXTRA_SABERMOD_GCC += \
          -fsanitize=thread
 endif
 
-EXTRA_SABERMOD_HOST_GCC := \
-  -ftree-loop-distribution \
-  -ftree-loop-if-convert \
-  -ftree-loop-im \
-  -ftree-loop-ivcanon
-
 ifdef EXTRA_SABERMOD_GCC_VECTORIZE
 export EXTRA_SABERMOD_GCC_VECTORIZE := \
          $(EXTRA_SABERMOD_GCC_VECTORIZE) \
@@ -688,6 +682,8 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libRSCpuRef \
     libRSDriver \
     mdnsd \
+    libunwind_llvm \
+    libunwind \
     $(NO_OPTIMIZATIONS)
 
   LOCAL_ARM64_COMPILERS_WHITELIST_BASE := \
@@ -702,6 +698,8 @@ ifeq ($(strip $(ENABLE_SABERMOD_ARM_MODE)),true)
     libRSDriver \
     libjpeg \
     mdnsd \
+    libunwind_llvm \
+    libunwind \
     $(NO_OPTIMIZATIONS)
 
   # Check if there's already something set somewhere.
@@ -732,11 +730,6 @@ else
   LOCAL_DEBUGGING_WHITELIST += \
     $(LOCAL_DEBUGGING_WHITELIST_BASE)
 endif
-
-# Enable some basic host gcc optimizations
-# None that are cpu specific but arch is ok.
-EXTRA_SABERMOD_HOST_GCC := \
-  -ftree-vectorize
 
 # Extra SaberMod CLANG C flags
 EXTRA_SABERMOD_CLANG := \
