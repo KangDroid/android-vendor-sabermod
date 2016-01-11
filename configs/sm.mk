@@ -135,7 +135,7 @@ export TARGET_ARCH_SECOND_INC_PATH := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_
     # Find strings in version info
     ifneq ($(filter %sabermod,$(SM_AND)),)
 export SM_AND_NAME := $(filter %sabermod,$(SM_AND))
-      SM_AND_DATE := $(filter 20140% 20141% 20150% 20151%,$(SM_AND))
+      SM_AND_DATE := $(filter 20140% 20141% 20150% 20151% 20161%,$(SM_AND))
       SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
       SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
 
